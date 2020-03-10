@@ -27,3 +27,38 @@ input.addEventListener('focusout', closeFloater);
 overlay.addEventListener('click', closeFloater); 
 
 
+
+
+//* ==============Bookmarks functinality =================*/
+
+// 1. The best way to generate bookmars list is to Add Form tag and then Submit form !!! 
+// Grab bookmarks list
+
+const bookmarksList = document.querySelector('.bookmarks-list');
+const bookmarkForm = document.querySelector('.bookmark-form');
+const bookmarkInput = bookmarkForm.querySelector('input[type=text]');
+
+// Access to function
+function createBookmark(e) {
+    e.preventDefault();
+    const title = bookmarkInput.value;
+    const bookmark = document.createElement('a');
+    bookmark.className = 'bookmark';
+    bookmark.innerText = title;
+    bookmark.href = "#";
+    bookmark.target = '_blank';
+    console.log(bookmark); 
+
+
+    bookmarksList.appendChild(bookmark);
+
+    // Reset bookmark
+    bookmarkForm.reset();
+    // console.log('procede');
+}
+// Add eventlistener 'submit' = When you click the form you are submit -confirm new bookmark-post! 
+bookmarkForm.addEventListener('submit', createBookmark);
+
+// How we know that this form is submited? First lets add form tag over the floater.
+
+
